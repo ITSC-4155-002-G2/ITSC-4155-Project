@@ -1,12 +1,12 @@
 Group 2
-Scrum Master
+Scrum Master:
 Shelton Latham
 
-Product Owner 
+Product Owner: 
 Robert Broughton
 
-Developers
-Peyton Hopkins
-DeCristo Franceschini 
-Ryan Jones
-Maisha Alam Meem
+Developers:
+Peyton Hopkins,
+DeCristo Franceschini, 
+Ryan Jones,
+and Maisha Alam Meem
