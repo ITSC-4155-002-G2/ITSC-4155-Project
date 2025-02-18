@@ -1,4 +1,5 @@
 import { useState } from "react";
+import GoogleMapComponent from "./Components/GoogleMapsComponent";
 
 export function Card({ children, className }) {
     return <div className={`bg-white p-4 rounded shadow ${className}`}>{children}</div>;
@@ -20,9 +21,9 @@ export function Input({ type, placeholder, value, onChange }) {
     );
 }
 
-export function Button({ children, type, className }) {
+export function Button({ children, type, className, onClick }) {
     return (
-        <button type={type} className={`bg-blue-500 text-white p-2 rounded ${className}`}>
+        <button type={type} onClick={onClick} className={`bg-blue-500 text-white p-2 rounded ${className}`}>
             {children}
         </button>
     );
@@ -32,6 +33,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -42,7 +44,14 @@ export default function Login() {
         setError("");
         console.log("Logging in with", email, password);
         // Handle authentication logic here
+        // Set user is logged in for testing GoogleMapComponent
+        setIsLoggedIn(true);
     };
+
+    // Try sending user to GoogleMapsComponent
+    if(isLoggedIn) {
+        return <GoogleMapComponent apiKey="AIzaSyA8HWVZpwv0-F_o2i6YxuWDR6N8zifLt74" />;
+    }
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
