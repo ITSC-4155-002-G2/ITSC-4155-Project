@@ -50,7 +50,7 @@ export default function Login() {
 
     // Try sending user to GoogleMapsComponent
     if(isLoggedIn) {
-        return <GoogleMapComponent apiKey="AIzaSyA8HWVZpwv0-F_o2i6YxuWDR6N8zifLt74" />;
+        return <GoogleMapComponent apiKey="" />;
     }
 
     return (
