@@ -1,6 +1,7 @@
 import './EnterAddress.css';
+import { Link } from "react-router-dom"
 
-function EnterAddress() {
+function NewTrip() {
  return (
    <div className="addressForm">
        <form action="#" class="addressForm">
@@ -19,7 +20,7 @@ function EnterAddress() {
                 <label for="currentLocation">Current Location</label>
             </div>
             <div class="startTrip">
-                <input type = "submit" value="Start Trip" class="formItem" id="startTrip"/>
+                <Link to="/map"><input type = "submit" value="Start Trip" class="formItem" id="startTrip"/></Link>
             </div>
         </form> 
    </div>
@@ -27,4 +28,4 @@ function EnterAddress() {
 }
 
 
-export default EnterAddress;
+export default NewTrip;

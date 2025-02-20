@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from "@react-google-maps/api";
+import { Link } from "react-router-dom";
 
 const mapContainerStyle = {
   width: "100%",
@@ -35,9 +36,10 @@ const GoogleMapComponent = ({ apiKey }) => {
   return (
     <LoadScript googleMapsApiKey={apiKey}>
       <div style={{ display: "flex", height: "100vh" }}>
-        
+      
         {/* Map Column (75%)*/}
         <div style={{ width: showDestinations ? "75%" : "100%", height: "100%" }}>
+          <Link to="/newtrip"><button>New Trip</button></Link>
           <input type="text" placeholder="Enter start address" value={origin} onChange={(e) => setOrigin(e.target.value)} />
           <input type="text" placeholder="Enter destination address" value={destination} onChange={(e) => setDestination(e.target.value)} />
           <button onClick={handleRoute}>Get Route</button>    

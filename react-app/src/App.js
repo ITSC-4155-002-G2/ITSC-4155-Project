@@ -1,5 +1,6 @@
 import { useState } from "react";
 import GoogleMapComponent from "./Components/GoogleMapsComponent";
+import { Navigate } from "react-router-dom";
 
 export function Card({ children, className }) {
     return <div className={`bg-white p-4 rounded shadow ${className}`}>{children}</div>;
@@ -50,7 +51,7 @@ export default function Login() {
 
     // Try sending user to GoogleMapsComponent
     if(isLoggedIn) {
-        return <GoogleMapComponent apiKey="" />;
+        return <Navigate to="/map"><GoogleMapComponent apiKey="" /></Navigate>;
     }
 
     return (
