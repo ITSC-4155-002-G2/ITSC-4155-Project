@@ -51,7 +51,7 @@ export default function Login() {
 
     // Try sending user to GoogleMapsComponent
     if(isLoggedIn) {
-        return <Navigate to="/map"><GoogleMapComponent apiKey="" /></Navigate>;
+        return <Navigate to="/map" />;
     }
 
     return (
