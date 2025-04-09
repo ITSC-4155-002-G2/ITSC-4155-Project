@@ -1,0 +1,106 @@
+/* Flex container to center the login form */
+.login-container {  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    font-family: Arial, sans-serif;
+}
+
+/* Card container */
+.login-container .bg-white { 
+    background-color: #263049; 
+    padding: 2rem;
+    border-radius: 32px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card content */
+.card-content {
+    padding: 3rem 5rem  5rem;
+}
+
+/* Heading styles */
+.login-container h2 { 
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #EE4E56; 
+    margin-bottom: 4rem;    
+}
+
+/* Input styles */
+.login-container input { 
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.login-container input:focus { 
+    border-color: #F2D742; 
+    border-width: 2px;
+    outline: none;
+}
+
+/* Button styles */
+.login-container button { 
+    background-color: #EE4E56; 
+    color: #263049; 
+    padding: 1rem;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover { 
+    background-color: #F2D742;
+}
+
+/* Error message styles */
+.text-red-500 {
+    color: #EE4E56; 
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+/* Space between form elements */
+.space-y-4 > * + * {
+    margin-top: 1rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+/* Logo Styles */
+.login-container .logo {  
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    width: 130px;  
+    height: 130px;
+    object-fit: contain;
+}
+
+/* Welcome Title */
+.login-container .welcome-title {  
+    position: absolute;
+    top: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    font-weight: bolder;
+    color: #263049;
+    text-align: center;
+    z-index: 10;
+}
+
+
+  

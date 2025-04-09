@@ -1,13 +1,14 @@
 import { useState } from "react";
 import GoogleMapComponent from "./Components/GoogleMapsComponent";
 import { Navigate } from "react-router-dom";
+import "./login.css";  
 
 export function Card({ children, className }) {
     return <div className={`bg-white p-4 rounded shadow ${className}`}>{children}</div>;
 }
 
 export function CardContent({ children }) {
-    return <div>{children}</div>;
+    return <div className="card-content">{children}</div>;
 }
 
 export function Input({ type, placeholder, value, onChange }) {
@@ -44,18 +45,23 @@ export default function Login() {
         }
         setError("");
         console.log("Logging in with", email, password);
-        // Handle authentication logic here
-        // Set user is logged in for testing GoogleMapComponent
         setIsLoggedIn(true);
     };
 
-    // Try sending user to GoogleMapsComponent
     if(isLoggedIn) {
         return <Navigate to="/map" />;
     }
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="login-container"> 
+            
+            <img
+                src="/logo-red-transparent.png"  
+                alt="Logo"
+                className="logo"
+            />
+
+            <div className="welcome-title">Welcome To Better Destination!</div>
             <Card className="w-96 p-6 shadow-lg">
                 <CardContent>
                     <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
