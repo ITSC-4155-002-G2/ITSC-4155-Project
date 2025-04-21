@@ -35,7 +35,7 @@ con.connect(function(err) {
 app.delete('/delete/:email/:password', (req, res) => {
   const email = req.params.email;
   const password = req.params.password;
-  const query = 'DELETE FROM users WHERE email = ? AND password = ?';
+  const query = 'DELETE FROM login WHERE email = ? AND password = ?';
 
   con.query(query,[email, password],(err, result) => {
     if (err) {
