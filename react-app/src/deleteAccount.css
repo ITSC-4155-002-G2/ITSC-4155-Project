@@ -1,0 +1,23 @@
+.deleteAccount {
+    display:flex;
+    flex-direction: column;
+    width: 250px;
+    margin-top: 10px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.deleteAccount button {
+    width: 100px;
+    align-self:flex-end;
+    margin-top: 10px;
+}
+
+.instructions {
+    font-weight: 300;
+}

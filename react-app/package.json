@@ -4,7 +4,11 @@
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^2.20.6",
+    "axios": "^1.8.4",
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
     "cra-template": "1.2.0",
+    "express": "^5.1.0",
     "mysql": "^2.18.1",
     "react": "^19.0.0",
     "react-app": "^1.1.2",
@@ -14,7 +18,9 @@
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:frontend": "react-scripts start",
+    "start:backend": "nodemon src/database.js",
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -40,5 +46,6 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": []
 }

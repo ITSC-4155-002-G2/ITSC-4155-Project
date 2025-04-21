@@ -74,6 +74,9 @@ const GoogleMapComponent = ({ apiKey }) => {
                 <button onClick={() => setShowDestinations(!showDestinations)}>
                   {showDestinations ? "Hide Destinations" : "Show Destinations"}
                 </button>
+                <Link to="/account">
+                  <button>Account</button>
+                </Link>
               </div>
             </div>
 
