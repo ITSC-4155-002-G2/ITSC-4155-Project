@@ -6,6 +6,7 @@ const app = express();
 const port = 3001;
 
 app.use(cors());
+app.use(express.json())
 
 var con = mysql.createConnection({
   host: "localhost",
@@ -25,11 +26,26 @@ con.connect(function(err) {
       if (err) throw err;
           console.log("Database created");
     });
-    con.query("CREATE TABLE login (user VARCHAR(255), password VARCHAR(255))", function (err, result) {
+    con.query("CREATE TABLE login (email VARCHAR(255), password VARCHAR(255))", function (err, result) {
       if (err) throw err;
       console.log("Table created");
     });
   }
+});
+
+app.post('/users', (req, res) => {
+  console.log("request received")
+  const email = req.body.key1;
+  const password = req.body.key2;
+  const query = 'INSERT INTO login (email, password) VALUES (?, ?)';
+
+  con.query(query,[email, password],(err, result) => {
+    if (err) {
+      console.log('Error creating user');
+      return res.status(500).json({ error: 'User creation failed' });
+    }
+    res.status(201).json({ id: result.insertId });
+  });
 });
 
 app.delete('/delete/:email/:password', (req, res) => {
