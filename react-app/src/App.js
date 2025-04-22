@@ -31,23 +31,42 @@ export function Button({ children, type, className, onClick }) {
     );
 }
 
-export default function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    export default function Login() {
+        const [email, setEmail] = useState("");
+        const [password, setPassword] = useState("");
+        const [error, setError] = useState("");
+        const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const handleSubmit = (e) => {
-        console.log("Running handleSubmit");
-        e.preventDefault();
-        if (!email || !password) {
-            setError("Please enter both email and password.");
-            return;
-        }
-        setError("");
-        console.log("Logging in with", email, password);
-        setIsLoggedIn(true);
-    };
+        const handleLogin = async (e) => {
+            console.log("Running handleLogin");
+            e.preventDefault();
+        
+            if (!email || !password) {
+                setError("Please enter both email and password.");
+                return;
+            }
+        
+            setError("");
+            console.log("Logging in with", email, password);
+        
+            try {
+                const res = await fetch("http://localhost:3001/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ key1: email, key2: password }),
+                });
+        
+                if (res.ok) {
+                    setIsLoggedIn(true);
+                } else {
+                    const data = await res.json();
+                    setError(data.error || "Login failed");
+                }
+            } catch (err) {
+                console.error("Login error:", err);
+                setError("Server error. Please try again later.");
+            }
+        };
     const handleCreate = async (e) => {
         e.preventDefault();
         if (!email || !password) {
@@ -100,7 +119,7 @@ export default function Login() {
                 <CardContent>
                     <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
                     {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <form onSubmit={handleLogin} className="space-y-4">
                         <Input
                             type="email"
                             placeholder="Email"

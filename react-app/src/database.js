@@ -48,6 +48,26 @@ app.post('/users', (req, res) => {
   });
 });
 
+app.post('/login', (req, res) => {
+  const { key1: email, key2: password } = req.body;
+  const query = 'SELECT * FROM login WHERE email = ? AND password = ?';
+
+  con.query(query, [email, password], (err, results) => {
+    if (err) {
+      console.log('Error during login', err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+
+    if (results.length > 0) {
+      // Successful login
+      res.status(200).json({ message: 'Login successful' });
+    } else {
+      // Invalid credentials
+      res.status(401).json({ error: 'Invalid email or password' });
+    }
+  });
+});
+
 app.delete('/delete/:email/:password', (req, res) => {
   const email = req.params.email;
   const password = req.params.password;
