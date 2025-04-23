@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import  NewTrip  from './EnterAddress';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GoogleMapComponent from "./Components/GoogleMapsComponent";
 import DeleteUser from './deleteAccount';
@@ -14,7 +13,6 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<App/>} />
-        <Route path="/newtrip" element={<NewTrip/>} />
         <Route path="/account" element={<DeleteUser/>} />
         <Route path="/map" element={<GoogleMapComponent apiKey="" />} />
       </Routes>

@@ -67,9 +67,6 @@ const GoogleMapComponent = ({ apiKey }) => {
                 onChange={(e) => setDestination(e.target.value)}
               />
               <div className="button-group">
-                <Link to="/newtrip">
-                  <button>New Trip</button>
-                </Link>
                 <button onClick={handleRoute}>Get Route</button>
                 <button onClick={() => setShowDestinations(!showDestinations)}>
                   {showDestinations ? "Hide Destinations" : "Show Destinations"}
