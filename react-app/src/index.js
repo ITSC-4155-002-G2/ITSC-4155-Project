@@ -18,7 +18,7 @@ root.render(
       <Routes>
         <Route exact path="/" element={<App/>} />
         <Route path="/account" element={<DeleteUser/>} />
-        <Route path="/map" element={<GoogleMapComponent apiKey="AIzaSyDVZuOvaDQySRtYyL9L0-4vnzgI2Aq1v7Q" libraries={libraries}/>} />
+        <Route path="/map" element={<GoogleMapComponent apiKey="" libraries={libraries}/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
