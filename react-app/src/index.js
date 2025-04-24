@@ -7,6 +7,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GoogleMapComponent from "./Components/GoogleMapsComponent";
 import DeleteUser from './deleteAccount';
 
+
+const libraries = ["places"];
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -14,11 +18,12 @@ root.render(
       <Routes>
         <Route exact path="/" element={<App/>} />
         <Route path="/account" element={<DeleteUser/>} />
-        <Route path="/map" element={<GoogleMapComponent apiKey="" />} />
+        <Route path="/map" element={<GoogleMapComponent apiKey="AIzaSyDVZuOvaDQySRtYyL9L0-4vnzgI2Aq1v7Q" libraries={libraries}/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

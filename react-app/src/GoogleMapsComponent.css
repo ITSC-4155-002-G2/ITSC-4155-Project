@@ -1,139 +1,182 @@
 /* Header container */
 .map-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background-color: #263049;
-    border-radius: 2rem;
-    position: relative;
-  }
-  
-  /* Left spacer div */
-  .map-header-left {
-    width: 60px; 
-  }
-  
-  .map-title {
-    flex: 1;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #F2D742;
-    margin: 0;
-  }
-  
-  .map-logo {
-    height: 60px;
-    width: auto;
-    object-fit: contain;
-  }
-  
-  
-  /* Main layout */
-  .map-body {
-    display: flex;
-    flex-grow: 1;
-    overflow: hidden;
-  }
-  
-  /* Map panel */
-  .map-panel {
-    width: 100%;
-    padding: 1.5rem;
-    background-color: #ffffff;
-    transition: width 0.3s ease;
-  }
-  
-  .map-panel.shrinked {
-    width: 75%;
-  }
-  
-  /* Input & Buttons */
-  .input-section {
-    margin-bottom: 1rem;
-  }
-  
-  .input-section input {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 0.5rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-  }
-  
-  .input-section input:focus {
-    border-color: #F2D742;
-    outline: none;
-  }
-  
-  /* Button group */
-  .button-group {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  
-  .button-group button,
-  .button-group a button {
-    background-color: #EE4E56;
-    color: #263049;
-    padding: 0.75rem 1rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button-group button:hover {
-    background-color: #F2D742;
-  }
-  
-  /* Destinations Panel */
-  .destinations-panel {
-    width: 25%;
-    background-color: #263049;
-    color: white;
-    padding: 2rem 1rem;
-    overflow-y: auto;
-    margin-top: 20px;
-    border-radius: 2rem;
-  }
-  
-  .destinations-panel h2 {
-    text-align: center;
-    color: #F2D742;
-    margin-bottom: 2rem;
-  }
-  
-  .destinations-panel h3 {
-    color: #EE4E56;
-    margin-bottom: 0.5rem;
-  }
-  
-  .destinations-panel p {
-    font-size: 0.9rem;
-    margin: 0.2rem 0;
-  }
-  
-  .destination-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 2rem;
-  }
-  
-  .destination-text {
-    padding-left: 10px;
-  }
-  
-  .destination-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 5px;
-  }
-  
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #263049;
+  border-radius: 2rem;
+  position: relative;
+}
+
+/* Left spacer div */
+.map-header-left {
+  width: 60px;
+}
+
+.map-title {
+  flex: 1;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #F2D742;
+  margin: 0;
+}
+
+.map-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+
+/* Main layout */
+.map-body {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+/* Map panel */
+.map-panel {
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  transition: width 0.3s ease;
+}
+
+.map-panel.shrinked {
+  width: 68%;
+}
+
+/* Input & Buttons */
+.input-section {
+  margin-bottom: 1rem;
+}
+
+.input-section input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.input-section input:focus {
+  border-color: #F2D742;
+  outline: none;
+}
+
+/* Button group */
+.button-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.button-group button,
+.button-group a button {
+  background-color: #EE4E56;
+  color: #263049;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-group button:hover {
+  background-color: #F2D742;
+}
+
+/* Destinations Panel */
+.destinations-panel {
+  width: 32%;
+  background-color: #263049;
+  color: white;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+  margin-top: 20px;
+  border-radius: 2rem;
+  max-height: 765px;
+  overflow: hidden;
+}
+
+.destinations-panel h2 {
+  text-align: center;
+  color: #F2D742;
+  margin-bottom: 2rem;
+}
+
+.destinations-panel h3 {
+  color: #EE4E56;
+  margin-bottom: 0.5rem;
+}
+
+.destinations-panel p {
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+}
+
+.destination-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.destination-text {
+  padding-left: 10px;
+}
+
+.destination-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.destination-button {
+  background-color: #EE4E56;
+  color: #263049;
+  padding: 0.6rem .8rem;
+  border: none;
+  border-radius: 5px;
+  font-size: .8rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 5px;
+}
+
+.destination-button:hover {
+  background-color: #F2D742;
+}
+
+.destinations-scroll {
+  overflow-y: auto;
+  max-height: calc(100vh - 220px);
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  flex-grow: 1;
+}
+
+.destinations-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.destinations-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.destinations-scroll::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.destinations-scroll:hover {
+  scrollbar-color: #EE4E56 transparent;
+}
