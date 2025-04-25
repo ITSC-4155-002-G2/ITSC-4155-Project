@@ -34,8 +34,11 @@ export function Button({ children, type, className, onClick }) {
     export default function Login() {
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
+        const [oldPassword, setOldPassword] = useState(""); // For updating password
+        const [newPassword, setNewPassword] = useState(""); // For updating password
         const [error, setError] = useState("");
         const [isLoggedIn, setIsLoggedIn] = useState(false);
+        const [showUpdatePassword, setShowUpdatePassword] = useState(false); // To manage showing the Update Password form
 
         const handleLogin = async (e) => {
             console.log("Running handleLogin");
@@ -99,6 +102,34 @@ export function Button({ children, type, className, onClick }) {
           }
           setIsLoggedIn(true);
       };
+
+      const handleUpdatePassword = async (e) => {
+        e.preventDefault();
+        
+        if (!email || !oldPassword || !newPassword) {
+            setError("Please fill in all fields.");
+            return;
+        }
+
+        setError("");
+
+        try {
+            const res = await fetch("http://localhost:3001/update-password", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, oldPassword, newPassword }),
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                alert("Password updated successfully!");
+            } else {
+                setError(data.error || "Error updating password.");
+            }
+        } catch (err) {
+            setError("Server error. Please try again later.");
+        }
+    };
     
 
     if(isLoggedIn) {
@@ -134,8 +165,48 @@ export function Button({ children, type, className, onClick }) {
                         />
                         <Button type="submit" className="w-full">Login</Button>
                     </form>
+                    {/* Button to show the Update Password form */}
+                    <div className="text-center mt-4">
+                        <Button
+                            type="button"
+                            className="w-full"
+                            onClick={() => setShowUpdatePassword(true)}
+                        >
+                            Update Password
+                        </Button>
+                    </div>
                 </CardContent>
             </Card>
+            {/* Conditionally render Update Password Form */}
+            {showUpdatePassword && (
+                <Card className="w-96 p-6 shadow-lg">
+                    <CardContent>
+                        <h2 className="text-2xl font-bold text-center mb-4">Update Password</h2>
+                        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+                        <form onSubmit={handleUpdatePassword} className="space-y-4">
+                            <Input
+                                type="email"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <Input
+                                type="password"
+                                placeholder="Old Password"
+                                value={oldPassword}
+                                onChange={(e) => setOldPassword(e.target.value)}
+                            />
+                            <Input
+                                type="password"
+                                placeholder="New Password"
+                                value={newPassword}
+                                onChange={(e) => setNewPassword(e.target.value)}
+                            />
+                            <Button type="submit" className="w-full">Update Password</Button>
+                        </form>
+                    </CardContent>
+                </Card>
+            )}
             <Card className="w-96 p-6 shadow-lg">
                 <CardContent>
                     <h2 className="text-2xl font-bold text-center mb-4">Signup</h2>
@@ -157,6 +228,9 @@ export function Button({ children, type, className, onClick }) {
                     </form>
                 </CardContent>
             </Card>
+
+           
         </div>
     );
 }
+ 
