@@ -1,38 +1,127 @@
-.App {
-  text-align: center;
+/* Flex container to center the login form */
+.login-container {  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    font-family: Arial, sans-serif;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    gap: 20px; /* Space between the cards */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Card container */
+.login-container .bg-white { 
+    background-color: #263049; 
+    padding: 2rem;
+    border-radius: 32px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    width: 350px; /* Same width for all cards */
+    height: 500px; /* Fixed height to make cards equal size */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* To align items neatly within the card */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Card content */
+.card-content {
+    margin-top: 10px;
+    padding: 2rem; /* Consistent padding inside each card */
+    flex-grow: 1; /* Ensure the content stretches to fit available space */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Heading styles */
+.login-container h2 { 
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #EE4E56; 
+    margin-bottom: 2rem;  /* Adjust margin for better alignment */
 }
 
-.App-link {
-  color: #61dafb;
+/* Input styles */
+.login-container input { 
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-container input:focus { 
+    border-color: #F2D742; 
+    border-width: 2px;
+    outline: none;
 }
+
+/* Button styles */
+.login-container button { 
+    background-color: #EE4E56; 
+    color: #263049; 
+    padding: 1rem;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover { 
+    background-color: #F2D742;
+}
+
+/* Space between form elements */
+.space-y-4 > * + * {
+    margin-top: 1rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+/* Error message styles */
+.text-red-500 {
+    color: #EE4E56; 
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+/* Logo Styles */
+.login-container .logo {  
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    width: 130px;  
+    height: 130px;
+    object-fit: contain;
+}
+
+/* Welcome Title */
+.login-container .welcome-title {  
+    position: absolute;
+    top: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    font-weight: bolder;
+    color: #263049;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Space between Login form and Update Password button */
+.card-content .text-center {
+    margin-top: 20px; /* Space between Login button and Update Password button */
+}
+
+/* Space between Login card and Signup card */
+.card-content .mt-6 {
+    margin-top: 30px; /* Ensure spacing between cards */
+}
+.button{
+    margin-top: 10px;
+}
+

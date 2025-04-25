@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import GoogleMapComponent from "./Components/GoogleMapsComponent";
-import DeleteUser from './deleteAccount';
+import GoogleMapComponent from "./GoogleMapsComponent";
+import App from "./App";
+import LoginPage from "./LoginPage";
+import SignupPage from "./SignupPage";
+import UpdatePasswordPage from "./UpdatePasswordPage";
+import DeleteAccountPage from "./DeleteAccountPage";
 
 
 const libraries = ["places"];
@@ -17,8 +19,11 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<App/>} />
-        <Route path="/account" element={<DeleteUser/>} />
         <Route path="/map" element={<GoogleMapComponent apiKey="" libraries={libraries}/>} />
+        <Route exact path="/loginpage" element={<LoginPage/>} />
+        <Route path="/signuppage" element={<SignupPage/>} />
+        <Route path="/updatepasspage" element={<UpdatePasswordPage/>} />
+        <Route path="/deletepage" element={<DeleteAccountPage/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

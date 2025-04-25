@@ -1,4 +1,4 @@
-import { useState } from "react";
+/*import { useState } from "react";
 import GoogleMapComponent from "./Components/GoogleMapsComponent";
 import { Navigate } from "react-router-dom";
 import "./login.css";  
@@ -31,6 +31,10 @@ export function Button({ children, type, className, onClick }) {
     );
 }
 
+export function deleteAccountNav() {
+    return <Navigate to="/map" />
+}
+
     export default function Login() {
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
@@ -38,6 +42,7 @@ export function Button({ children, type, className, onClick }) {
         const [newPassword, setNewPassword] = useState(""); // For updating password
         const [error, setError] = useState("");
         const [isLoggedIn, setIsLoggedIn] = useState(false);
+        const [deleteAcc, setdeleteAcc] = useState(false);
         const [showUpdatePassword, setShowUpdatePassword] = useState(false); // To manage showing the Update Password form
 
         const handleLogin = async (e) => {
@@ -170,7 +175,7 @@ export function Button({ children, type, className, onClick }) {
                 <CardContent>
                     <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
                     {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
-                    <form onSubmit={handleLogin} className="space-y-4">
+                    // <form onSubmit={handleLogin} className="space-y-4">
                         <Input
                             type="email"
                             placeholder="Email"
@@ -184,8 +189,8 @@ export function Button({ children, type, className, onClick }) {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <Button type="submit" className="w-full">Login</Button>
+                        
                     </form>
-                    {/* Button to show the Update Password form */}
                     <div className="text-center mt-4">
                         <Button
                             type="button"
@@ -195,9 +200,17 @@ export function Button({ children, type, className, onClick }) {
                             Update Password
                         </Button>
                     </div>
+                    <div className="text-center mt-4">
+                        <Button
+                            type="button"
+                            className="w-full"
+                            onClick={() => {}}
+                        >
+                            Delete Account
+                        </Button>
+                    </div>
                 </CardContent>
             </Card>
-            {/* Conditionally render Update Password Form */}
             {showUpdatePassword && (
                 <Card className="w-96 p-6 shadow-lg">
                     <CardContent>
@@ -273,4 +286,26 @@ export function Button({ children, type, className, onClick }) {
         </div>
     );
 }
- 
+*/
+import { Link } from "react-router-dom";
+import Button from "./Components/Button";
+import Card from "./Components/Card";
+import CardContent from "./Components/CardContent";
+
+export default function HomePage() {
+    return (
+        <div className="login-container">
+            <img src="/logo-red-transparent.png" alt="Logo" className="logo" />
+            <div className="welcome-title">Welcome To Better Destination!</div>
+            <Card className="w-96 p-6 shadow-lg">
+                <CardContent>
+                    <h2 className="text-2xl font-bold text-center mb-4">HomePage</h2>
+                    <Link to="/loginpage"><Button type="button">Login</Button></Link>
+                    <Link to="/signuppage"><Button type="button">Signup</Button></Link>
+                    <Link to="/updatepasspage"><Button type="button">Update Password</Button></Link>
+                    <Link to="/deletepage"><Button type="button">Delete Account</Button></Link>
+                </CardContent>
+            </Card>
+        </div>
+    );
+}

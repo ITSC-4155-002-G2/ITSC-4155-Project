@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, DirectionsRenderer } from "@react-google-maps/api";
 import { Link } from "react-router-dom";
-import "../GoogleMapsComponent.css";
+import "./GoogleMapsComponent.css";
 
 
 const mapContainerStyle = {
