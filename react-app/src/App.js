@@ -54,7 +54,7 @@ export function Button({ children, type, className, onClick }) {
         
             try {
                 const res = await fetch("http://localhost:3001/login", {
-                    method: "POST",
+                    method: "GET",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ key1: email, key2: password }),
                 });
@@ -85,19 +85,16 @@ export function Button({ children, type, className, onClick }) {
         console.log("Creating with", email, password);
 
         setError("");
-        const res = await fetch("http://localhost:3001/users", {
+        const res = await fetch("http://localhost:3001/create", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ key1: email, key2: password }),
-          });
-          
-          const text = await res.text();  // ✅ Only use this if you're debugging
-          
+          });       
           try {
-            const data = JSON.parse(text);
+            const data = JSON.parse(info);
             alert(`User created with ID: ${data.id}`);
           } catch (err) {
-            console.error("Failed to parse server response:", text);
+            console.error("Failed to parse server response:", info);
             setError("Server returned invalid response.");
           }
           setIsLoggedIn(true);
@@ -115,7 +112,7 @@ export function Button({ children, type, className, onClick }) {
 
         try {
             const res = await fetch("http://localhost:3001/update-password", {
-                method: "POST",
+                method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, oldPassword, newPassword }),
             });
@@ -131,6 +128,29 @@ export function Button({ children, type, className, onClick }) {
         }
     };
     
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        if (!email || !password) {
+            setError("Please enter both email and password.");
+            return;
+        }
+        console.log("Delete with", email, password);
+
+        setError("");
+        const res = await fetch("http://localhost:3001/delete", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ key1: email, key2: password }),
+          });
+          
+          try {
+            console.log(res.status);
+          } catch (err) {
+            console.error("Failed to parse server response:");
+            setError("Server returned invalid response.");
+          }
+          setIsLoggedIn(true);
+      };
 
     if(isLoggedIn) {
         return <Navigate to="/map" />;
@@ -228,7 +248,27 @@ export function Button({ children, type, className, onClick }) {
                     </form>
                 </CardContent>
             </Card>
-
+            <Card className="w-96 p-6 shadow-lg">
+                <CardContent>
+                    <h2 className="text-2xl font-bold text-center mb-4">Delete Account</h2>
+                    {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+                    <form onSubmit={handleDelete} className="space-y-4">
+                        <Input
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <Input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <Button type="submit" className="w-full">Delete</Button>
+                    </form>
+                </CardContent>
+            </Card>
            
         </div>
     );

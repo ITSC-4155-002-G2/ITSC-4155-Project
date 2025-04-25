@@ -1,4 +1,4 @@
-var mysql = require('mysql2');
+var mysql = require('mysql');
 const express = require('express');
 const cors = require('cors');
 
@@ -33,7 +33,7 @@ con.connect(function(err) {
   }
 });
 
-app.post('/users', (req, res) => {
+app.post('/create', (req, res) => {
   console.log("request received")
   const email = req.body.key1;
   const password = req.body.key2;
@@ -48,7 +48,7 @@ app.post('/users', (req, res) => {
   });
 });
 
-app.post('/login', (req, res) => {
+app.get('/login', (req, res) => {
   const { key1: email, key2: password } = req.body;
   const query = 'SELECT * FROM login WHERE email = ? AND password = ?';
 
@@ -69,7 +69,7 @@ app.post('/login', (req, res) => {
 });
 
 // Update password route
-app.post('/update-password', (req, res) => {
+app.put('/update-password', (req, res) => {
   const { email, oldPassword, newPassword } = req.body;
 
   // Check if all fields are provided
@@ -105,15 +105,18 @@ app.post('/update-password', (req, res) => {
 });
 
 
-app.delete('/delete/:email/:password', (req, res) => {
-  const email = req.params.email;
-  const password = req.params.password;
+app.delete('/delete', (req, res) => {
+  
+  const email = req.body.key1;
+  const password = req.body.key2;
   const query = 'DELETE FROM login WHERE email = ? AND password = ?';
-
+  console.log(email + "" + password);
   con.query(query,[email, password],(err, result) => {
     if (err) {
-      console.log('Error deleting user');
+      console.log('Error creating user');
+      return res.status(500).json({ error: 'User creation failed' });
     }
+    return res.status(201).json({ id: result.insertId });
   });
 });
 
